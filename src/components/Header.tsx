@@ -13,8 +13,9 @@ const Header: React.FC = () => {
         <nav className="flex items-center gap-4 lg:gap-6 text-sm">
           <NavLink to="/speakers" className={({isActive}) => isActive ? 'transition-colors text-brand' : 'transition-colors hover:text-white text-gray-light'}>Speakers</NavLink>
           <NavLink to="/sessions" className={({isActive}) => isActive ? 'transition-colors text-brand' : 'transition-colors hover:text-white text-gray-light'}>Sessions</NavLink>
-          <a className="btn-primary text-sm hidden sm:inline-block" href="#call-for-speakers">Call for Speakers</a>
-          <a className="sm:hidden btn-primary text-xs px-3 py-2" href="#call-for-speakers" aria-label="Call for Speakers">CFP</a>
+          <a className="btn-primary text-sm hidden sm:inline-block" href="https://forms.gle/your-registration-link" target="_blank" rel="noopener noreferrer">Register Now</a>
+          <a className="btn-outline text-sm hidden lg:inline-block" href="#call-for-speakers">Call for Speakers</a>
+          <a className="sm:hidden btn-primary text-xs px-3 py-2" href="https://forms.gle/your-registration-link" target="_blank" rel="noopener noreferrer" aria-label="Register">Register</a>
         </nav>
       </div>
     </header>

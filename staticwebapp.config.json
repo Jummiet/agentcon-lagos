@@ -1,0 +1,253 @@
+# Custom Domain & SSL Setup Guide
+## Add Your Own Domain to AgentCamp Lagos
+
+---
+
+## 🎯 Overview
+
+You'll set up:
+- ✅ Custom domain (e.g., agentcamplagos.com)
+- ✅ Wildcard SSL certificate (automatic & free)
+- ✅ HTTPS redirection
+- ✅ All subdomains protected
+
+**Time Required**: 15-30 minutes (mostly waiting for DNS propagation)
+
+---
+
+## Part 1: Buy a Domain (10 minutes)
+
+### **Option A: Namecheap (Recommended)**
+
+1. **Go to**: https://www.namecheap.com
+2. **Search** for your domain name
+3. **Add to cart** and checkout
+4. **Total cost**: ~$10-15/year
+
+**Suggested domains:**
+- `agentcamplagos.com`
+- `agentcamp-lagos.com`
+- `lagoagentcamp.com`
+- `agenteventlagos.com`
+
+### **Option B: GoDaddy**
+
+1. **Go to**: https://www.godaddy.com
+2. Similar process as Namecheap
+
+### **Option C: Azure App Service Domain**
+
+1. **Azure Portal** → Search "App Service Domains"
+2. **Click** "+ Add"
+3. **Fill in** domain name
+4. **Purchase** through Azure billing
+
+---
+
+## Part 2: Add Custom Domain to Azure (5 minutes)
+
+### **In Azure Portal:**
+
+1. **Navigate to**: Static Web Apps → `agentcamp-lagos`
+
+2. **Left menu** → Click "Custom domains"
+
+3. **Click** "+ Add" button
+
+4. **Select** "Custom domain on other DNS"
+
+5. **Choose domain type:**
+
+   **For Root Domain:**
+   - Enter: `agentcamplagos.com`
+   
+   **For WWW:**
+   - Enter: `www.agentcamplagos.com`
+   
+   **For Wildcard (all subdomains):**
+   - Enter: `*.agentcamplagos.com`
+
+6. **Click** "Next"
+
+7. Azure will display DNS records you need to add
+
+**Keep this window open** - you'll need these values!
+
+---
+
+## Part 3: Configure DNS Records (10 minutes)
+
+### **Go to Your Domain Registrar** (Namecheap/GoDaddy)
+
+### **Namecheap Instructions:**
+
+1. **Login** to Namecheap
+2. **Go to**: Dashboard → Domain List
+3. **Click** "Manage" next to your domain
+4. **Click** "Advanced DNS" tab
+
+### **Add These Records:**
+
+#### **Record 1: Validation TXT Record**
+
+```
+Type: TXT Record
+Host: @ (or _dnsauth)
+Value: [Copy from Azure Portal - long string]
+TTL: Automatic
+```
+
+#### **Record 2: Root Domain (CNAME or ALIAS)**
+
+For root domain (`agentcamplagos.com`):
+
+```
+Type: CNAME Record (or URL Redirect)
+Host: @
+Value: [Your Azure Static Web App URL]
+       Example: nice-stone-123abc.azurestaticapps.net
+TTL: Automatic
+```
+
+**Note**: Some registrars don't allow CNAME on root. If blocked, use:
+- **ALIAS** record (if available)
+- **A** record (Azure will provide IP)
+- Or just use **www** subdomain
+
+#### **Record 3: WWW Subdomain**
+
+```
+Type: CNAME Record
+Host: www
+Value: [Your Azure Static Web App URL]
+TTL: Automatic
+```
+
+#### **Record 4: Wildcard (Optional)**
+
+To cover all subdomains (*.agentcamplagos.com):
+
+```
+Type: CNAME Record
+Host: *
+Value: [Your Azure Static Web App URL]
+TTL: Automatic
+```
+
+### **GoDaddy Instructions:**
+
+1. **Login** to GoDaddy
+2. **Go to**: My Products → Domains
+3. **Click** DNS next to your domain
+4. **Add** the same records as above
+
+---
+
+## Part 4: Verify & Wait (10-30 minutes)
+
+### **In Azure Portal:**
+
+1. **After adding DNS records**, go back to Azure
+2. **Click** "Validate"
+3. Wait for validation (can take 5-30 minutes)
+
+**Status indicators:**
+- 🟡 **Validating** - DNS records being checked
+- 🟢 **Configured** - Success!
+- 🔴 **Failed** - Check DNS records
+
+### **Check DNS Propagation:**
+
+Use this tool: https://dnschecker.org
+- Enter your domain
+- Check if records show globally
+
+---
+
+## Part 5: SSL Certificate (Automatic!)
+
+**Azure automatically provisions SSL** - no action needed!
+
+### **What Azure Does:**
+
+1. ✅ Detects your custom domain
+2. ✅ Requests SSL certificate from DigiCert
+3. ✅ Installs certificate
+4. ✅ Enables HTTPS
+5. ✅ Sets up auto-renewal
+
+**For Wildcard SSL:**
+- Covers: `agentcamplagos.com`, `www.agentcamplagos.com`, `api.agentcamplagos.com`, etc.
+- All subdomains automatically protected
+
+### **SSL Status Check:**
+
+In Azure Portal:
+- **Go to**: Static Web Apps → Custom domains
+- **Look for**: 🔒 icon next to your domain
+- **Status**: "Certificate provisioned"
+
+**Timeline:**
+- Validation: 5-30 minutes
+- SSL provisioning: 5-15 minutes
+- **Total**: Up to 45 minutes
+
+---
+
+## Part 6: Configure HTTPS Redirect (Optional)
+
+Force all traffic to HTTPS:
+
+1. **In Azure Portal** → Your Static Web App
+2. **Left menu** → "Configuration"
+3. **Add** this to your `staticwebapp.config.json`:
+
+```json
+{
+  "globalHeaders": {
+    "Strict-Transport-Security": "max-age=31536000"
+  },
+  "routes": [
+    {
+      "route": "/*",
+      "allowedRoles": ["anonymous"]
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  }
+}
+```
+
+Or create the file in your project:
+
+<function_calls>
+<invoke name="create_file">
+<parameter name="content">{
+  "globalHeaders": {
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "X-XSS-Protection": "1; mode=block"
+  },
+  "routes": [
+    {
+      "route": "/*",
+      "allowedRoles": ["anonymous"]
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/images/*.{png,jpg,gif,ico}", "/css/*"]
+  },
+  "mimeTypes": {
+    ".json": "application/json",
+    ".webmanifest": "application/manifest+json"
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html",
+      "statusCode": 200
+    }
+  }
+}
