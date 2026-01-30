@@ -1,4 +1,5 @@
 # Complete GitHub Actions Deployment Guide
+
 ## Get Your Site Live in 10 Steps
 
 ---
@@ -23,6 +24,7 @@ az account set --subscription "Visual Studio Enterprise Subscription - MVP/RD"
 ```
 
 Verify:
+
 ```powershell
 az account show
 ```
@@ -46,6 +48,7 @@ az staticwebapp create --name agentcamp-lagos --resource-group agentcamp-lagos-r
 ```
 
 **What happens:**
+
 - Browser opens for GitHub authorization
 - Click **"Authorize Azure Static Web Apps"**
 - Wait 1-2 minutes for creation
@@ -65,7 +68,7 @@ az staticwebapp secrets list --name agentcamp-lagos --resource-group agentcamp-l
 
 ## Step 6: Add GitHub Secret (1 minute)
 
-1. Go to: https://github.com/Jummiet/agentcon-lagos/settings/secrets/actions
+1. Go to: <https://github.com/Jummiet/agentcon-lagos/settings/secrets/actions>
 
 2. Click **"New repository secret"**
 
@@ -91,7 +94,7 @@ git push origin main
 
 ## Step 8: Watch Deployment (3 minutes)
 
-1. Go to: https://github.com/Jummiet/agentcon-lagos/actions
+1. Go to: <https://github.com/Jummiet/agentcon-lagos/actions>
 
 2. Click on the newest workflow run
 
@@ -107,7 +110,7 @@ In PowerShell:
 az staticwebapp show --name agentcamp-lagos --resource-group agentcamp-lagos-rg --query "defaultHostname" -o tsv
 ```
 
-Or it will be: **https://agentcamp-lagos.azurestaticapps.net**
+Or it will be: **<https://agentcamp-lagos.azurestaticapps.net>**
 
 ---
 
@@ -133,19 +136,25 @@ Open the URL in your browser - your site is LIVE!
 ## 🔧 Quick Troubleshooting
 
 ### "Error: The resource group already exists"
+
 ✅ This is fine! Just continue to Step 4
 
 ### "Error: The app name is already taken"
+
 Change the name:
+
 ```powershell
 az staticwebapp create --name agentcamp-lagos-YOURNAME --resource-group agentcamp-lagos-rg ...
 ```
 
 ### "GitHub authorization failed"
+
 - Make sure you're logged into GitHub in your browser
 - Try the command again
 
+
 ### Workflow still failing
+
 - Double-check the secret name is exactly: `AZURE_STATIC_WEB_APPS_API_TOKEN`
 - Make sure you pasted the complete token
 - No extra spaces before/after the token
