@@ -9,7 +9,10 @@ const CtaBanner: React.FC = () => {
           <div className="flex-1">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Call for Speakers</h2>
             <p className="mt-2 text-sm sm:text-base text-gray-light max-w-2xl leading-relaxed">
-              Share your expertise on taking AI from prompt to production. Topics: AI agents, production deployment, safety & governance, scalable architectures, MLOps, and responsible AI. Lightning talks (15–20m) and deep dives (40m) welcome.
+              Have you shipped AI to production? Solved real-world challenges at scale? Built systems that deliver value safely? Share your story! We're looking for practitioners who can show the community how to turn prompts into production-ready solutions.
+            </p>
+            <p className="mt-3 text-sm sm:text-base text-gray-light max-w-2xl leading-relaxed">
+              Topics include AI agents, production deployment, safety & governance, scalable architectures, MLOps, and responsible AI.
             </p>
           </div>
           <a className="btn-primary px-6 py-3 text-center whitespace-nowrap" target="_blank" rel="noopener noreferrer" href="https://example.com/call-for-speakers">Submit a Talk</a>
