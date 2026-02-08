@@ -9,7 +9,7 @@ const CtaBanner: React.FC = () => {
           <div className="flex-1">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Call for Speakers</h2>
             <p className="mt-2 text-sm sm:text-base text-gray-light max-w-2xl leading-relaxed">
-              Share your expertise on AI agents, Copilot, MLOps, data governance, or responsible AI. Lightning talks (15–20m) and deep dives (40m) welcome.
+              Share your expertise on taking AI from prompt to production. Topics: AI agents, production deployment, safety & governance, scalable architectures, MLOps, and responsible AI. Lightning talks (15–20m) and deep dives (40m) welcome.
             </p>
           </div>
           <a className="btn-primary px-6 py-3 text-center whitespace-nowrap" target="_blank" rel="noopener noreferrer" href="https://example.com/call-for-speakers">Submit a Talk</a>

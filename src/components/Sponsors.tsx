@@ -40,7 +40,7 @@ const Sponsors: React.FC = () => {
             className="btn-primary px-8 py-3 text-center inline-flex" 
             target="_blank" 
             rel="noopener noreferrer" 
-            href="mailto:sponsors@agentcamp.com?subject=AgentCamp%202026%20Lagos%20Sponsorship%20Inquiry"
+            href="mailto:sponsors@agentcamplagos.com?subject=AgentCamp%202026%20Lagos%20Sponsorship%20Inquiry"
           >
             Contact Us for Sponsorship
           </a>

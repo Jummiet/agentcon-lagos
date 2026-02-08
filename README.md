@@ -1,6 +1,9 @@
 
 # AgentCamp 2026 – Lagos Edition
 
+**From Prompt to Production — Community AI in a Day**  
+*Where builders and decision‑makers ship value, safely and at scale.*
+
 Responsive website for **AgentCamp 2026 – Lagos Edition** happening **May 23, 2026** from **08:00 – 17:00 WAT**. Built with **React + Vite + TypeScript + Tailwind CSS**.
 
 ## Quick Start
