@@ -129,10 +129,19 @@ html {
 .border-t-gray-subtle { border-top: 1px solid rgba(229, 231, 235, 0.05); }
 .shadow-brand { box-shadow: 0 25px 50px -12px rgba(210, 88, 60, 0.25); }
 
+.sessionize-link {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.sessionize-brand {
+  color: #1AB394;
+}
+
 /* Checkbox styling */
 input[type="checkbox"] {
-  appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   background-color: rgba(43, 58, 77, 0.6);
   border: 2px solid #4B5563;
   border-radius: 4px;
