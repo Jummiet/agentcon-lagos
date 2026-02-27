@@ -15,7 +15,7 @@ const CtaBanner: React.FC = () => {
               Topics include AI agents, production deployment, safety & governance, scalable architectures, MLOps, and responsible AI.
             </p>
           </div>
-          <a className="btn-primary px-6 py-3 text-center whitespace-nowrap" target="_blank" rel="noopener noreferrer" href="https://example.com/call-for-speakers">Submit a Talk</a>
+          <a className="btn-primary px-6 py-3 text-center whitespace-nowrap" target="_blank" rel="noopener noreferrer" href="https://sessionize.com/agentcamp-lagos-2026">Submit a Talk</a>
         </div>
       </div>
     </section>

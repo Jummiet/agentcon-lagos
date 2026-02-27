@@ -14,7 +14,7 @@ const Header: React.FC = () => {
           <NavLink to="/speakers" className={({isActive}) => isActive ? 'transition-colors text-brand' : 'transition-colors hover:text-white text-gray-light'}>Speakers</NavLink>
           <NavLink to="/sessions" className={({isActive}) => isActive ? 'transition-colors text-brand' : 'transition-colors hover:text-white text-gray-light'}>Sessions</NavLink>
           <a className="btn-primary text-sm hidden sm:inline-block" href="https://globalai.community/agentcamp/lagos/" target="_blank" rel="noopener noreferrer">Register Now</a>
-          <a className="btn-outline text-sm hidden lg:inline-block" href="#call-for-speakers">Call for Speakers</a>
+          <a className="btn-outline text-sm hidden lg:inline-block" href="https://sessionize.com/agentcamp-lagos-2026" target="_blank" rel="noopener noreferrer">Call for Speakers</a>
           <a className="sm:hidden btn-primary text-xs px-3 py-2" href="https://globalai.community/agentcamp/lagos/" target="_blank" rel="noopener noreferrer" aria-label="Register">Register</a>
         </nav>
       </div>
