@@ -8,7 +8,7 @@ const About: React.FC = () => {
       <div className="container relative">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-4">About AgentCamp 2026</h2>
-          <p className="text-lg sm:text-xl font-semibold text-brand-blue text-center mb-2">From Prompt to Production — Community AI in a Day</p>
+          <p className="text-lg sm:text-xl font-semibold text-brand-blue text-center mb-2">The Age of Agents: From Code to Cognition</p>
           <p className="text-sm sm:text-base text-gray-light text-center mb-10">Where builders and decision‑makers ship value, safely and at scale.</p>
           <div className="text-center">
             <p className="text-base sm:text-lg text-gray-light leading-relaxed px-4">
