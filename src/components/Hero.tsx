@@ -1,5 +1,6 @@
 
 import React from 'react'
+import CountdownTimer from './CountdownTimer'
 
 const Hero: React.FC = () => {
   return (
@@ -30,6 +31,7 @@ const Hero: React.FC = () => {
                 <strong className="font-semibold">Event Time:</strong> 8:00 AM – 5:00 PM WAT
               </p>
             </div>
+            <CountdownTimer />
             <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 max-w-md sm:max-w-none lg:justify-start justify-center">
               <a href="https://sessionize.com/agentcamp-lagos-2026" target="_blank" rel="noopener noreferrer" className="btn-primary text-sm md:text-base text-center px-6 py-3">Apply to Speak</a>
               <a href="#sessions" className="btn-outline text-sm md:text-base text-center px-6 py-3">Explore Sessions</a>
