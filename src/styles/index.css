@@ -1,21 +1,38 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  color-scheme: light dark;
+  --bg-base: #0f2a33;
+  --bg-deep: #081c22;
+  --card-bg: rgba(9, 30, 38, 0.7);
+  --card-border: rgba(146, 178, 190, 0.24);
+  --text-primary: #f3fbff;
+  --text-muted: #c9d8de;
+  --brand-coral: #f26b4a;
+  --brand-coral-strong: #ea5a36;
+  --brand-sky: #6ed3f5;
 }
 
 * {
+  box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 html, body, #root { height: 100%; }
 body { 
-  @apply bg-navy text-white;
-  background-color: #2B3A4D;
+  @apply text-white;
+  font-family: 'Manrope', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(70rem 40rem at 8% -5%, rgba(242, 107, 74, 0.25), transparent 60%),
+    radial-gradient(60rem 36rem at 92% 8%, rgba(110, 211, 245, 0.24), transparent 58%),
+    linear-gradient(180deg, var(--bg-base) 0%, var(--bg-deep) 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
 }
 
 #root {
@@ -29,49 +46,60 @@ body {
 }
 
 .card { 
-  @apply rounded-xl sm:rounded-2xl border border-gray-200/10 bg-white/5 backdrop-blur transition-all hover:bg-white/[0.08] hover:border-brand-blue/30;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  @apply rounded-xl sm:rounded-2xl backdrop-blur transition-all;
+  border: 1px solid var(--card-border);
+  background: linear-gradient(180deg, var(--card-bg) 0%, rgba(8, 27, 33, 0.62) 100%);
+  box-shadow: 0 14px 40px rgba(6, 19, 24, 0.28);
+}
+
+.card:hover {
+  border-color: rgba(110, 211, 245, 0.45);
+  background: linear-gradient(180deg, rgba(11, 34, 42, 0.84) 0%, rgba(8, 27, 33, 0.76) 100%);
+  transform: translateY(-2px);
 }
 
 .btn { 
   @apply inline-flex items-center justify-center rounded-lg sm:rounded-xl px-4 py-2 font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2;
-  focus-ring-offset-color: #2B3A4D;
+  focus-ring-offset-color: #0f2a33;
 }
 
 .btn-primary { 
-  @apply btn text-white hover:opacity-90 active:opacity-80 shadow-lg;
-  background-color: #D2583C;
-  box-shadow: 0 10px 15px -3px rgba(210, 88, 60, 0.3), 0 4px 6px -2px rgba(210, 88, 60, 0.2);
+  @apply btn text-white active:opacity-90;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(135deg, var(--brand-coral) 0%, var(--brand-coral-strong) 100%);
+  box-shadow: 0 14px 28px rgba(234, 90, 54, 0.34);
 }
 
 .btn-primary:hover {
-  background-color: #c04e35;
+  transform: translateY(-1px);
+  box-shadow: 0 16px 34px rgba(234, 90, 54, 0.4);
 }
 
 .btn-primary:focus {
   @apply ring-2;
-  ring-color: #D2583C;
+  ring-color: #f26b4a;
 }
 
 .btn-outline { 
   @apply btn text-white hover:bg-white/10 active:bg-white/5;
-  border: 1px solid rgba(148, 174, 187, 0.3);
+  border: 1px solid rgba(110, 211, 245, 0.42);
+  background: rgba(9, 35, 44, 0.4);
 }
 
 .btn-outline:hover {
-  border-color: rgba(148, 174, 187, 0.5);
+  border-color: rgba(110, 211, 245, 0.72);
 }
 
 .btn-outline:focus {
   @apply ring-2;
-  ring-color: #94AEBB;
+  ring-color: #6ed3f5;
 }
 
 .badge { 
   @apply inline-flex items-center rounded-full px-2.5 sm:px-3 py-0.5 sm:py-1 text-xs font-semibold whitespace-nowrap;
-  background-color: rgba(210, 88, 60, 0.15);
-  color: #f0b8ab;
-  border: 1px solid rgba(210, 88, 60, 0.2);
+  background-color: rgba(242, 107, 74, 0.18);
+  color: #ffd5cb;
+  border: 1px solid rgba(242, 107, 74, 0.34);
 }
 
 .skip-to-content { 
@@ -97,7 +125,7 @@ html {
 
 /* Focus visible for better accessibility */
 :focus-visible {
-  outline: 2px solid #D2583C;
+  outline: 2px solid var(--brand-coral);
   outline-offset: 2px;
 }
 
@@ -117,17 +145,17 @@ html {
 }
 
 /* Brand color utilities */
-.text-white-primary { color: #FFFFFF; }
-.text-gray-light { color: #F3F4F6; }
-.text-gray-disabled { color: #9CA3AF; }
-.text-brand { color: #D2583C; }
-.text-brand-blue { color: #94AEBB; }
-.bg-brand { background-color: #D2583C; }
-.bg-brand-glow { background-color: #D2583C; }
-.bg-blue-glow { background-color: #94AEBB; }
+.text-white-primary { color: var(--text-primary); }
+.text-gray-light { color: var(--text-muted); }
+.text-gray-disabled { color: #88a1ad; }
+.text-brand { color: var(--brand-coral); }
+.text-brand-blue { color: var(--brand-sky); }
+.bg-brand { background-color: var(--brand-coral); }
+.bg-brand-glow { background-color: var(--brand-coral); }
+.bg-blue-glow { background-color: var(--brand-sky); }
 .border-gray-subtle { border-color: rgba(229, 231, 235, 0.1); }
 .border-t-gray-subtle { border-top: 1px solid rgba(229, 231, 235, 0.05); }
-.shadow-brand { box-shadow: 0 25px 50px -12px rgba(210, 88, 60, 0.25); }
+.shadow-brand { box-shadow: 0 28px 56px -16px rgba(242, 107, 74, 0.46); }
 
 .sessionize-link {
   color: #FFFFFF;
@@ -142,16 +170,16 @@ html {
 input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
-  background-color: rgba(43, 58, 77, 0.6);
-  border: 2px solid #4B5563;
+  background-color: rgba(8, 27, 33, 0.8);
+  border: 2px solid #5e7481;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
 }
 
 input[type="checkbox"]:checked {
-  background-color: #D2583C;
-  border-color: #D2583C;
+  background-color: var(--brand-coral);
+  border-color: var(--brand-coral);
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
   background-size: 100% 100%;
   background-position: center;
@@ -159,10 +187,40 @@ input[type="checkbox"]:checked {
 }
 
 input[type="checkbox"]:hover {
-  border-color: #94AEBB;
+  border-color: var(--brand-sky);
 }
 
 input[type="checkbox"]:focus {
-  outline: 2px solid #D2583C;
+  outline: 2px solid var(--brand-coral);
   outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(110, 211, 245, 0.3);
+  color: #ffffff;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  section {
+    animation: reveal-up 0.55s ease both;
+  }
+
+  section:nth-of-type(2) {
+    animation-delay: 0.06s;
+  }
+
+  section:nth-of-type(3) {
+    animation-delay: 0.12s;
+  }
 }

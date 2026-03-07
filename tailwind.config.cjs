@@ -8,33 +8,33 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Lufga', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Plus Jakarta Sans', 'Lufga', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Manrope', 'Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Sora', 'Manrope', 'system-ui', 'sans-serif'],
       },
       colors: {
         brand: {
-          DEFAULT: '#D2583C',
-          orange: '#D2583C',
-          blue: '#94AEBB',
-          navy: '#2B3A4D',
+          DEFAULT: '#F26B4A',
+          orange: '#F26B4A',
+          blue: '#6ED3F5',
+          navy: '#0F2A33',
         },
         accent: {
-          blue: '#2563EB',
-          green: '#059669',
+          blue: '#0EA5E9',
+          green: '#10B981',
           amber: '#F59E0B',
-          red: '#DC2626',
+          red: '#EF4444',
         },
         gray: {
-          50: '#F9FAFB',
-          100: '#F3F4F6',
-          200: '#E5E7EB',
-          400: '#9CA3AF',
-          600: '#4B5563',
-          900: '#111827',
+          50: '#F8FAFC',
+          100: '#EAF2F5',
+          200: '#D3E0E6',
+          400: '#90A4AE',
+          600: '#5E7481',
+          900: '#10212A',
         },
         navy: {
-          DEFAULT: '#2B3A4D',
-          dark: '#1a2332',
+          DEFAULT: '#0F2A33',
+          dark: '#081C22',
         },
       }
     },
